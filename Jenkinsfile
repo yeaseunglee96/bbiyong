@@ -4,7 +4,7 @@ def sendMattermostNotification(boolean success) {
         script: 'git log -1 --pretty=%s 2>/dev/null || true',
         returnStdout: true
     ).trim() ?: '커밋 메시지 정보 없음'
-    def statusText = success ? '프론트엔드 빌드 및 배포 성공' : '프론트엔드 빌드 또는 배포 실패'
+    def statusText = success ? '[CD] FE 배포 성공' : '[CD] FE 배포 실패'
     def iconEmoji = success ? ':jenkins:' : ':angry_jenkins:'
     def text = "## ${iconEmoji} ${statusText}\n" +
         "**대상 브랜치:** `${branch}`\n" +
